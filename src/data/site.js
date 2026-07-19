@@ -22,8 +22,8 @@ import { faqs } from './faq'
 export const site = {
   // ── Brand ──────────────────────────────────────────────
   brand: {
-    name: 'Nova Labs',
-    logoText: 'Nova',        // shown next to the mark in the navbar
+    name: 'DeityBK Studio',
+    logoText: 'DeityBK',        // shown next to the mark in the navbar
     tagline: 'Digital Product Studio',
   },
 
@@ -43,7 +43,7 @@ export const site = {
     rotatingWords: ['mobile apps', 'software', 'websites', 'experiences'],
     titleTail: 'that people love.',
     subtitle:
-      'Nova Labs is a product studio helping ambitious teams design, build and scale beautiful digital products — from first sketch to shipped release.',
+      'DeityBK Labs is a product studio helping ambitious teams design, build and scale beautiful digital products — from first sketch to shipped release.',
     primaryCta: { label: 'Start a project', to: '/contact' },
     secondaryCta: { label: 'View our work', to: '/projects' },
     // small trust logos shown under the hero (text only, easy to edit)
@@ -104,7 +104,7 @@ export const site = {
     eyebrow: "Let's talk",
     title: 'Have a project in mind?',
     subtitle: 'Tell us about it. We usually reply within one business day.',
-    email: 'hello@novalabs.com',
+    email: 'hello@DeityBKlabs.com',
     phone: '+1 (555) 012-3456',
     address: '221B Product Street, San Francisco, CA',
     // ── Google Sheets integration ──────────────────────
