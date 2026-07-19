@@ -23,7 +23,7 @@ export const site = {
   // ── Brand ──────────────────────────────────────────────
   brand: {
     name: 'DeityBK Studio',
-    logoText: 'DeityBK',        // shown next to the mark in the navbar
+    logoText: 'DeityBK',        // shown next to the mar in the navbar
     tagline: 'Digital Product Studio',
   },
 
