@@ -1,0 +1,5 @@
+# Keep app-ads at the site root for ad crawlers.
+/app-ads.txt    /app-ads.txt   200
+
+# Netlify SPA fallback for extensionless app routes.
+/*    /index.html   200

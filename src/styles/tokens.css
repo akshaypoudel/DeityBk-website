@@ -1,0 +1,52 @@
+/* ════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — the single source of truth for colour.
+
+   Only FOUR colours are editable (via the theme customizer):
+     --primary    page background
+     --secondary  surfaces / cards
+     --accent     brand / highlights / gradients
+     --text       text
+
+   They are stored as space-separated RGB channels ("R G B") so Tailwind's
+   `rgb(var(--x) / <alpha>)` opacity utilities keep working.
+
+   Everything else (muted, border, glass, accent-soft, gradient stop…) is
+   DERIVED from those four with color-mix(). Change one of the four and the
+   whole site updates automatically.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* —— 4 core tokens (LIGHT defaults) —— */
+  --primary: 248 249 252;
+  --secondary: 255 255 255;
+  --accent: 108 78 255;
+  --text: 17 20 34;
+
+  /* —— derived (do not edit) —— */
+  --muted: color-mix(in srgb, rgb(var(--text)) 55%, rgb(var(--primary)));
+  --border: color-mix(in srgb, rgb(var(--text)) 14%, transparent);
+  --accent-soft: color-mix(in srgb, rgb(var(--accent)) 14%, transparent);
+  --accent-2: color-mix(in srgb, rgb(var(--accent)) 55%, white 45%);
+  --glass: color-mix(in srgb, rgb(var(--secondary)) 72%, transparent);
+  --on-accent: #ffffff;
+  --overlay: color-mix(in srgb, #05070d 62%, transparent);
+
+  /* semantic (not user-editable) */
+  --danger: 239 68 68;
+}
+
+.dark {
+  /* —— 4 core tokens (DARK defaults) —— */
+  --primary: 7 9 18;
+  --secondary: 16 20 36;
+  --accent: 138 110 255;
+  --text: 236 239 248;
+
+  /* derived overrides that read better in dark */
+  --muted: color-mix(in srgb, rgb(var(--text)) 52%, rgb(var(--primary)));
+  --border: color-mix(in srgb, rgb(var(--text)) 16%, transparent);
+  --accent-soft: color-mix(in srgb, rgb(var(--accent)) 22%, transparent);
+  --accent-2: color-mix(in srgb, rgb(var(--accent)) 60%, white 30%);
+  --glass: color-mix(in srgb, rgb(var(--secondary)) 60%, transparent);
+  --overlay: color-mix(in srgb, #000 68%, transparent);
+}
