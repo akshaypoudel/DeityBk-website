@@ -115,7 +115,7 @@ export const site = {
     // The URL looks like:
     //   'https://script.google.com/macros/s/AKfycb..../exec'
     // Leave as '' and the form falls back to opening the email app.
-    formEndpoint: '',
+    formEndpoint: 'https://script.google.com/macros/s/AKfycbxswqO0sY5zIXNhjnk-GhJT66xP3zj1TOKxK8l9YZzW10Vd3W4Ktnw5Df52OFluy4IdIA/exec',
   },
 
   // ── Socials (icon name → url) ──────────────────────────

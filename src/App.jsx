@@ -24,7 +24,7 @@ function PageFallback() {
     </div>
   )
 }
-
+// hello
 function NotFound() {
   return (
     <section className="container-x flex min-h-[60vh] flex-col items-center justify-center pt-32 text-center">
