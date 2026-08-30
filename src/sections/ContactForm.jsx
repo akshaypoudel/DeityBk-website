@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2 } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2, AlertCircle } from 'lucide-react'
 import { site } from '../data/site'
 import { Reveal, Select, Card, Button, Input, Textarea, IconWrapper } from '../components/ui'
 import { SectionHeading, Paragraph, Label, SmallText } from '../components/typography'
@@ -7,11 +7,23 @@ import Icon from '../components/Icon'
 
 const initial = { name: '', email: '', service: '', message: '' }
 
+// Unique id per submission attempt, used by the Apps Script to ignore
+// duplicate retries. crypto.randomUUID needs a secure context (https or
+// localhost), so keep a plain fallback for http previews and old browsers.
+const newSubmissionId = () =>
+  typeof crypto !== 'undefined' && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+
 export default function ContactForm() {
   const { contact } = site
   const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | success
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  // Held in a ref so a retry reuses the SAME id — that's what lets the
+  // script recognise a retry and not write the lead twice. Only rotated
+  // after a confirmed success.
+  const submissionId = useRef(newSubmissionId())
 
   const set = (k) => (e) => {
     setForm((f) => ({ ...f, [k]: e.target.value }))
@@ -34,17 +46,20 @@ export default function ContactForm() {
     setStatus('sending')
 
     // ── INTEGRATION POINT ────────────────────────────────
-    // If you set `contact.formEndpoint` in src/data/site.js (e.g. a
-    // Formspree URL), submissions POST there. Otherwise we fall back to
-    // opening the visitor's email client with the message pre-filled.
+    // If you set `contact.formEndpoint` in src/data/site.js (a Google Apps
+    // Script web app URL), submissions POST there and become rows in your
+    // Sheet. Otherwise we fall back to opening the visitor's email client
+    // with the message pre-filled.
     try {
       if (contact.formEndpoint) {
         // Send to a Google Apps Script web app (which appends to a Sheet).
-        // We use URLSearchParams (form-encoded) + mode:'no-cors' so the
-        // browser sends a "simple" request with NO CORS preflight — Apps
-        // Script accepts it and reads the values from e.parameter.
-        // The response is opaque (unreadable) by design, so a resolved
-        // fetch is treated as success.
+        // A URLSearchParams body is form-encoded, which makes this a "simple"
+        // CORS request — no preflight, and Apps Script reads the values from
+        // e.parameter. A web app deployed with access "Anyone" answers with
+        // Access-Control-Allow-Origin: *, so we can READ the reply and tell
+        // whether the row actually landed. (Do not add mode:'no-cors' here —
+        // it makes the response opaque, so a 403 from a mis-deployed script
+        // looks identical to success and submissions vanish silently.)
         const params = new URLSearchParams({
           name: form.name,
           email: form.email,
@@ -53,12 +68,14 @@ export default function ContactForm() {
           // handy extra columns for your sheet:
           page: typeof window !== 'undefined' ? window.location.href : '',
           submittedAt: new Date().toISOString(),
+          submissionId: submissionId.current,
         })
-        await fetch(contact.formEndpoint, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: params,
-        })
+        const res = await fetch(contact.formEndpoint, { method: 'POST', body: params })
+        if (!res.ok) throw new Error(`Endpoint responded ${res.status}`)
+        const data = await res.json().catch(() => null)
+        if (data && data.result !== 'success') {
+          throw new Error(data.message || 'The sheet rejected the submission')
+        }
       } else {
         // No endpoint configured → open the visitor's email app instead.
         const subject = encodeURIComponent(`New project enquiry from ${form.name}`)
@@ -67,14 +84,23 @@ export default function ContactForm() {
         )
         window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`
       }
+      // Confirmed landed — from here on, a new message is a new lead.
+      submissionId.current = newSubmissionId()
       setStatus('success')
       setForm(initial)
-    } catch {
-      // Network failed → fall back to opening the email app.
-      window.location.href = `mailto:${contact.email}`
-      setStatus('idle')
+    } catch (err) {
+      // Couldn't reach the sheet. Say so and offer email — never pretend it
+      // was delivered, and don't hijack the page with an automatic redirect.
+      console.error('Contact form submission failed:', err)
+      setStatus('error')
     }
   }
+
+  const mailtoHref = `mailto:${contact.email}?subject=${encodeURIComponent(
+    `New project enquiry from ${form.name}`,
+  )}&body=${encodeURIComponent(
+    `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service || '—'}\n\n${form.message}`,
+  )}`
 
   return (
     <section className="py-8">
@@ -89,7 +115,11 @@ export default function ContactForm() {
             <ul className="mt-8 space-y-4">
               {[
                 { icon: Mail, label: contact.email, href: `mailto:${contact.email}` },
-                { icon: Phone, label: contact.phone, href: `tel:${contact.phone}` },
+                ...(contact.phones || [contact.phone]).map((num) => ({
+                  icon: Phone,
+                  label: num,
+                  href: `tel:${num.replace(/[^\d+]/g, '')}`,
+                })),
                 { icon: MapPin, label: contact.address, href: null },
               ].map(({ icon: I, label, href }) => (
                 <li key={label} className="flex items-center gap-4">
@@ -140,6 +170,24 @@ export default function ContactForm() {
               </div>
             ) : (
               <div className="grid gap-5">
+                {status === 'error' && (
+                  <div className="flex gap-3 rounded-xl border border-danger/30 bg-danger/5 p-4">
+                    <AlertCircle size={18} className="mt-0.5 shrink-0 text-danger" />
+                    <div>
+                      <SmallText className="font-medium text-danger">
+                        We couldn't send that just now.
+                      </SmallText>
+                      <SmallText className="mt-1 block text-muted">
+                        Your message is still here — try again, or{' '}
+                        <a href={mailtoHref} className="text-accent underline underline-offset-2">
+                          email us directly
+                        </a>
+                        .
+                      </SmallText>
+                    </div>
+                  </div>
+                )}
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <Label as="label" htmlFor="name" className="mb-1.5 block">Name</Label>

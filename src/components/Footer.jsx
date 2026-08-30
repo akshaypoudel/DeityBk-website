@@ -59,14 +59,16 @@ export default function Footer() {
                 <Mail size={16} className="text-brand" /> {site.contact.email}
               </a>
             </li>
-            <li>
-              <a href={`tel:${site.contact.phone}`} className="flex items-center gap-2.5 hover:text-brand">
-                <Phone size={16} className="text-brand" /> {site.contact.phone}
-              </a>
-            </li>
-            <li className="flex items-start gap-2.5">
+            {(site.contact.phones || [site.contact.phone]).map((num) => (
+              <li key={num}>
+                <a href={`tel:${num.replace(/[^\d+]/g, '')}`} className="flex items-center gap-2.5 hover:text-brand">
+                  <Phone size={16} className="text-brand" /> {num}
+                </a>
+              </li>
+            ))}
+            {/* <li className="flex items-start gap-2.5">
               <MapPin size={16} className="mt-0.5 shrink-0 text-brand" /> {site.contact.address}
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

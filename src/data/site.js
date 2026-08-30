@@ -104,18 +104,36 @@ export const site = {
     eyebrow: "Let's talk",
     title: 'Have a project in mind?',
     subtitle: 'Tell us about it. We usually reply within one business day.',
-    email: 'hello@DeityBKlabs.com',
-    phone: '+1 (555) 012-3456',
-    address: '221B Product Street, San Francisco, CA',
-    // ── Google Sheets integration ──────────────────────
-    // Paste your Google Apps Script Web App URL here to have every form
-    // submission appended to your Google Sheet.
-    // Full step-by-step guide + the script to paste is in:
-    //   GOOGLE_SHEET_SETUP.md   (and google-apps-script.gs)
-    // The URL looks like:
-    //   'https://script.google.com/macros/s/AKfycb..../exec'
-    // Leave as '' and the form falls back to opening the email app.
-    formEndpoint: 'https://script.google.com/macros/s/AKfycbxswqO0sY5zIXNhjnk-GhJT66xP3zj1TOKxK8l9YZzW10Vd3W4Ktnw5Df52OFluy4IdIA/exec',
+    // Single contact email, reused consistently everywhere.
+    email: 'at.appworks@gmail.com',
+    // Contact phone numbers. `phones` is the full list rendered wherever
+    // numbers appear; `phone` stays as the primary for any single-number use.
+    phones: ['+91 88005 06627', '+91 82857 50531'],
+    phone: '+91 88005 06627',
+    // address: '221B Product Street, San Francisco, CA',
+    formEndpoint: 'https://script.google.com/macros/s/AKfycbzXSjKxCK97Nef1OlbCMXt1hC0kKXiWw5OUqQKRp3QdC_cTE-p09gfnwDBpQ8N-0iaEmw/exec',
+  },
+
+  // ── WhatsApp floating button ───────────────────────────
+  // ⚠️ PLACEHOLDER NUMBER — swap `number` for your real WhatsApp line.
+  // It must be full international format, DIGITS ONLY: country code +
+  // number, with no '+', spaces, dashes or leading zero.
+  //   IN  98765 43210    →  '919876543210'
+  //   UK  07700 900123   →  '447700900123'
+  //   US  (415) 555-0123 →  '14155550123'
+  // The current value is all zeroes on purpose: Indian mobile numbers
+  // never start with 0, so it's a valid-shaped but unassignable number.
+  // WhatsApp shows "this number is invalid" rather than opening a chat
+  // with some stranger who happens to own a realistic-looking number.
+  // Set `number` to '' to hide the button entirely.
+  whatsapp: {
+    number: '919876543212',
+    // Pre-filled text the visitor sends. Keep it short — they can edit it
+    // before hitting send, and a long wall of text tends to get deleted.
+    message: "Hi DeityBK Studio! I saw your website and I'd like to talk about a project.",
+    label: 'Chat with us on WhatsApp',
+    // Tooltip shown on hover (desktop only).
+    tooltip: 'Questions? Chat with us',
   },
 
   // ── Socials (icon name → url) ──────────────────────────

@@ -205,6 +205,199 @@ export const projects = [
     tech: ['React', 'Framer Motion', 'GSAP'],
   },
 
+  {
+    slug: 'suggestcollege',
+    title: 'SuggestCollege',
+    category: 'Education',
+    stack: 'React · Django · SQL',
+    description: 'A college discovery platform that guides students to the right course and campus.',
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80',
+    tags: ['React', 'Django', 'SQL'],
+    liveLink: '',
+    client: 'SuggestCollege',
+    year: '2025',
+    overview: [
+      'SuggestCollege is an education-focused platform that helps students find and compare colleges, courses and admissions information in one place.',
+      'The frontend is built with React for a fast, interactive experience, backed by a Django + SQL API that powers search, filtering and recommendations.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'Students struggle to compare thousands of colleges and courses scattered across dozens of websites with inconsistent data.',
+    solution:
+      'We built a React platform on a Django + SQL backend that centralises college data with smart search, filters and personalised course suggestions.',
+    results: [
+      { value: 'React', label: 'Frontend' },
+      { value: 'Django', label: 'Backend API' },
+      { value: 'SQL', label: 'Structured data' },
+    ],
+    tech: ['React', 'Django', 'SQL', 'REST API'],
+  },
+  {
+    slug: 'trunri',
+    title: 'Trunri',
+    category: 'Mobile',
+    stack: 'Flutter · Firebase',
+    description: 'A cross-platform mobile app built with Flutter and a realtime Firebase backend.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Flutter', 'Firebase', 'Mobile'],
+    liveLink: '',
+    client: 'Trunri',
+    year: '2025',
+    overview: [
+      'Trunri is a mobile application built with Flutter for a single, consistent experience across Android and iOS.',
+      'Firebase powers authentication, realtime data and cloud storage so the app stays fast and always in sync.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'The client needed one codebase that shipped to both app stores without compromising on native feel or speed.',
+    solution:
+      'We built Trunri in Flutter with a Firebase backend, giving a polished cross-platform app with realtime sync and secure auth.',
+    results: [
+      { value: 'Flutter', label: 'Single codebase' },
+      { value: 'Firebase', label: 'Realtime backend' },
+      { value: 'iOS + Android', label: 'One build' },
+    ],
+    tech: ['Flutter', 'Dart', 'Firebase'],
+  },
+  {
+    slug: 'famcure',
+    title: 'FamCure',
+    category: 'Healthcare',
+    stack: 'MERN · React Native',
+    description: 'A test-booking app to find and book healthcare tests like blood tests near you.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    tags: ['MERN', 'React Native', 'Healthcare'],
+    liveLink: '',
+    client: 'FamCure',
+    year: '2025',
+    overview: [
+      'FamCure is a healthcare test-booking platform where users discover nearby labs and book diagnostic tests such as blood tests based on their location.',
+      'A MERN web platform powers the admin and lab side, while a React Native app gives patients a smooth mobile booking experience.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'Booking lab tests meant calling around or visiting in person, with no easy way to compare nearby labs and prices.',
+    solution:
+      'We built location-based test discovery, healthcare/lab test listings and one-tap booking — on a MERN backend with a React Native mobile app.',
+    results: [
+      { value: 'Location', label: 'Based discovery' },
+      { value: '1-tap', label: 'Test booking' },
+      { value: 'Mobile', label: 'React Native app' },
+    ],
+    tech: ['MongoDB', 'Express', 'React', 'Node.js', 'React Native'],
+  },
+  {
+    slug: 'aquasip',
+    title: 'AquaSip',
+    category: 'Mobile',
+    stack: 'Flutter',
+    description: 'A Flutter app that helps you track daily water intake and stay hydrated.',
+    image: 'https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Flutter', 'Health', 'Lifestyle'],
+    liveLink: '',
+    client: 'AquaSip',
+    year: '2024',
+    overview: [
+      'AquaSip is a health and lifestyle mobile app that helps users build a healthy hydration habit.',
+      'Built with Flutter, it tracks daily water consumption, monitors hydration and sends gentle reminders throughout the day.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1502740479091-635887520276?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'People forget to drink enough water and lack a simple, motivating way to track it during a busy day.',
+    solution:
+      'We built AquaSip in Flutter with daily intake tracking, hydration monitoring, progress visuals and push-notification reminders.',
+    results: [
+      { value: 'Daily', label: 'Intake tracking' },
+      { value: 'Reminders', label: 'Push notifications' },
+      { value: 'Progress', label: 'Hydration goals' },
+    ],
+    tech: ['Flutter', 'Dart', 'Local notifications'],
+  },
+  {
+    slug: 'trunri-tourism',
+    title: 'Trunri Tourism',
+    category: 'Tourism',
+    stack: 'Flutter',
+    description: 'A location-based tourism app helping foreign travellers discover what’s around them.',
+    image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Flutter', 'Travel', 'Maps'],
+    liveLink: '',
+    client: 'Trunri',
+    year: '2024',
+    overview: [
+      'Trunri Tourism is a location-based travel app designed for foreign tourists exploring a new place.',
+      'Built with Flutter, it surfaces useful places and experiences around the user’s current location — from temples and events to restaurants and stays.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'Foreign tourists don’t know which nearby places are worth their time or how to find local recommendations.',
+    solution:
+      'We built location-based discovery for events, temples, accommodation, restaurants and attractions, with local recommendations — all in a Flutter app.',
+    results: [
+      { value: 'Nearby', label: 'Location discovery' },
+      { value: '5+', label: 'Place categories' },
+      { value: 'Local', label: 'Recommendations' },
+    ],
+    tech: ['Flutter', 'Dart', 'Google Maps', 'Geolocation'],
+  },
+  {
+    slug: 'real-estate-website',
+    title: 'Real Estate Website',
+    category: 'Website',
+    stack: 'MERN',
+    description: 'A modern real-estate platform for browsing, listing and enquiring on properties.',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
+    tags: ['MongoDB', 'Express', 'React', 'Node'],
+    liveLink: '',
+    client: 'Real Estate',
+    year: '2024',
+    overview: [
+      'A modern real-estate web application built on the MERN stack for browsing and managing property listings.',
+      'Visitors can search and filter properties, view rich listing detail pages and send enquiries, while admins manage listings from a dashboard.',
+    ],
+    video: '',
+    gallery: [
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80',
+    ],
+    challenge:
+      'The client needed a fast, modern property platform with search, detailed listings and enquiry handling in one place.',
+    solution:
+      'We built a MERN application with property search and filtering, detailed listing pages, enquiry forms and an admin dashboard for managing listings.',
+    results: [
+      { value: 'Search', label: 'Filter properties' },
+      { value: 'Listings', label: 'Rich detail pages' },
+      { value: 'Enquiries', label: 'Lead capture' },
+    ],
+    tech: ['MongoDB', 'Express', 'React', 'Node.js'],
+  },
+
   // 👇 ADD A NEW PROJECT by copying this template and filling it in:
   // {
   //   slug: 'my-new-project',

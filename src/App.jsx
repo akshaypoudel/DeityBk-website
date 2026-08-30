@@ -5,9 +5,11 @@ import Navbar from './components/navigation/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgress from './components/ScrollProgress'
+import WhatsAppButton from './components/WhatsAppButton'
 import { Button } from './components/ui'
 import { HeroTitle, SectionHeading, Paragraph } from './components/typography'
 import Home from './pages/Home' // eager — the landing page
+import ThankYou from './pages/ThankYou'
 
 // Code-split the secondary pages so the initial load stays lean.
 const Services = lazy(() => import('./pages/Services'))
@@ -24,7 +26,7 @@ function PageFallback() {
     </div>
   )
 }
-// hello
+
 function NotFound() {
   return (
     <section className="container-x flex min-h-[60vh] flex-col items-center justify-center pt-32 text-center">
@@ -64,12 +66,16 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/privacy-policy/:slug" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </motion.main>
       <Footer />
+      {/* Outside <main> so it stays put across route changes instead of
+          re-animating on every navigation. */}
+      <WhatsAppButton />
     </div>
   )
 }
