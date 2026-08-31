@@ -1,0 +1,31 @@
+/* Reusable gradient utilities — all driven by the accent token so they
+   retint automatically when the accent colour changes. */
+@layer components {
+  .text-gradient {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--accent)),
+      var(--accent-2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-accent-gradient {
+    background-image: linear-gradient(
+      to bottom right,
+      rgb(var(--accent)),
+      var(--accent-2)
+    );
+  }
+
+  /* Gradient border: gradient background showing through a padded inset. */
+  .gradient-border {
+    position: relative;
+    background:
+      linear-gradient(rgb(var(--secondary)), rgb(var(--secondary))) padding-box,
+      linear-gradient(to bottom right, rgb(var(--accent)), var(--accent-2)) border-box;
+    border: 1px solid transparent;
+  }
+}

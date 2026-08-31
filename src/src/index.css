@@ -1,0 +1,151 @@
+/* Design-system entry. Tokens/shadows/gradients live in ./styles.
+   Fonts are loaded via <link> in index.html. */
+@import './styles/tokens.css';
+@import './styles/shadows.css';
+@import './styles/typography.css';
+@import './styles/gradients.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-primary text-fg font-sans antialiased;
+    background-image: radial-gradient(
+        60rem 40rem at 80% -10%,
+        rgb(var(--accent) / 0.12),
+        transparent 60%
+      ),
+      radial-gradient(50rem 40rem at -10% 10%, rgb(var(--accent) / 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.28);
+  }
+
+  /* Respect reduced-motion users */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .glass {
+    @apply border border-border bg-glass backdrop-blur-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+      transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+      focus-visible:ring-offset-primary disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-on-accent shadow-glow hover:-translate-y-0.5 hover:shadow-glow-strong;
+  }
+
+  .btn-ghost {
+    @apply btn border border-border bg-transparent text-fg hover:border-accent hover:text-accent;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-border bg-secondary/70 px-3 py-1
+      text-xs font-semibold uppercase tracking-widest text-muted;
+  }
+
+  .card-surface {
+    @apply rounded-3xl border border-border bg-secondary/70 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .policy-richtext h1,
+  .policy-richtext h2,
+  .policy-richtext h3,
+  .policy-richtext h4 {
+    @apply font-display text-fg;
+  }
+
+  .policy-richtext h1 {
+    @apply mt-10 border-b border-border pb-3 text-3xl font-bold first:mt-0;
+  }
+
+  .policy-richtext h2 {
+    @apply mt-10 border-l-4 border-accent pl-4 text-2xl font-semibold first:mt-0;
+  }
+
+  .policy-richtext h3 {
+    @apply mt-8 text-xl font-semibold text-accent;
+  }
+
+  .policy-richtext h4 {
+    @apply mt-6 text-lg font-semibold;
+  }
+
+  .policy-richtext p,
+  .policy-richtext li,
+  .policy-richtext div {
+    @apply text-base leading-8 text-muted;
+  }
+
+  .policy-richtext p,
+  .policy-richtext ul,
+  .policy-richtext ol,
+  .policy-richtext div {
+    @apply mt-4;
+  }
+
+  .policy-richtext ul,
+  .policy-richtext ol {
+    @apply ml-6 space-y-3;
+  }
+
+  .policy-richtext ul {
+    @apply list-disc;
+  }
+
+  .policy-richtext ol {
+    @apply list-decimal;
+  }
+
+  .policy-richtext a,
+  .policy-footer a {
+    @apply text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:text-brand;
+  }
+
+  .policy-richtext strong,
+  .policy-footer strong {
+    @apply font-semibold text-fg;
+  }
+
+  .policy-richtext .highlight,
+  .policy-richtext .third-party,
+  .policy-richtext .cookies-info,
+  .policy-richtext .contact-info,
+  .policy-richtext .definition {
+    @apply rounded-3xl border border-border bg-secondary/70 p-5;
+  }
+
+  .policy-footer p {
+    @apply text-center text-sm leading-7 text-muted;
+  }
+}
