@@ -1,7 +1,7 @@
 import { cn } from '../../utils/cn'
 
 /**
- * Typography system — the ONLY place text styles are defined.
+ * Typography system - the ONLY place text styles are defined.
  * Never write raw <h1 className="text-5xl font-bold ..."> in the app; use
  * these instead so sizing, weight, leading, tracking, colour and spacing
  * stay consistent everywhere.
@@ -26,7 +26,7 @@ function make(defaultTag, base) {
   return Component
 }
 
-// —— Display / headings ——
+// -- Display / headings --
 export const HeroTitle = make(
   'h1',
   'font-display font-bold tracking-tight text-fg text-4xl leading-[1.08] sm:text-6xl md:text-7xl',
@@ -48,7 +48,7 @@ export const SubHeading = make(
   'text-base sm:text-lg text-muted leading-relaxed',
 )
 
-// —— Body ——
+// -- Body --
 export const Paragraph = make('p', 'text-base text-muted leading-relaxed')
 export const SmallText = make('p', 'text-sm text-muted leading-relaxed')
 export const Caption = make('span', 'text-xs text-muted leading-normal')

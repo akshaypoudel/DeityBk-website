@@ -15,7 +15,7 @@ export default function Team() {
           center
           eyebrow="Our team"
           title="Meet the people behind the work"
-          subtitle="The people who will design, build and ship your product — you work with them directly."
+          subtitle="The people who will design, build and ship your product - you work with them directly."
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

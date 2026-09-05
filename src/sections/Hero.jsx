@@ -11,6 +11,11 @@ export default function Hero() {
   const words = hero.rotatingWords
   const [i, setI] = useState(0)
   const sectionRef = useRef(null)
+  const reducedMotion = useRef(false)
+
+  useEffect(() => {
+    reducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  }, [])
 
   useEffect(() => {
     const id = setInterval(() => setI((n) => (n + 1) % words.length), 2400)
@@ -21,7 +26,7 @@ export default function Hero() {
   const handleMouseMove = (e) => {
     const el = sectionRef.current
     if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (reducedMotion.current) return
     const r = el.getBoundingClientRect()
     el.style.setProperty('--mx', `${e.clientX - r.left}px`)
     el.style.setProperty('--my', `${e.clientY - r.top}px`)
@@ -76,14 +81,22 @@ export default function Hero() {
           className="mt-6 max-w-4xl"
         >
           {hero.titleLead}{' '}
-          <span className="relative inline-flex min-w-[1ch] justify-center">
-            {/* keyed rotating word (entrance only — no AnimatePresence) */}
+          <span className="relative inline-grid justify-items-center">
+            {/* invisible copies of every word share the same grid cell, so
+                the slot is always as wide as the longest word - the headline
+                never reflows when the word rotates (no CLS) */}
+            {words.map((w) => (
+              <span key={w} aria-hidden className="invisible col-start-1 row-start-1">
+                {w}
+              </span>
+            ))}
+            {/* keyed rotating word (entrance only - no AnimatePresence) */}
             <motion.span
               key={words[i]}
               initial={{ opacity: 0, y: 20, rotateX: -40 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-gradient"
+              className="text-gradient col-start-1 row-start-1"
             >
               {words[i]}
             </motion.span>
@@ -115,25 +128,27 @@ export default function Hero() {
           </Button>
         </motion.div>
 
-        {/* trusted by */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 w-full"
-        >
-          <Overline>Trusted by teams at</Overline>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {hero.trustedBy.map((name) => (
-              <span
-                key={name}
-                className="font-display text-lg font-semibold text-muted transition-colors hover:text-fg"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+        {/* trusted by (hidden when hero.trustedBy is empty/removed in site.js) */}
+        {hero.trustedBy?.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 w-full"
+          >
+            <Overline>Trusted by teams at</Overline>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+              {hero.trustedBy.map((name) => (
+                <span
+                  key={name}
+                  className="font-display text-lg font-semibold text-muted transition-colors hover:text-fg"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   )

@@ -23,7 +23,7 @@ export default function ThemeCustomizer() {
         aria-hidden="true"
       />
 
-      {/* panel (pure-CSS slide-in — always settles at x:0) */}
+      {/* panel (pure-CSS slide-in - always settles at x:0) */}
       <aside
         role="dialog"
         aria-label="Theme customizer"

@@ -27,12 +27,18 @@ export default function Testimonials() {
                   “{t.quote}”
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    loading="lazy"
-                    className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/30"
-                  />
+                  {t.avatar ? (
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      loading="lazy"
+                      className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/30"
+                    />
+                  ) : (
+                    <div className="grid h-11 w-11 place-items-center rounded-full bg-brand/15 font-display font-semibold text-brand ring-2 ring-brand/30">
+                      {t.name.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <div className="font-semibold">{t.name}</div>
                     <div className="text-sm text-muted">{t.role}</div>

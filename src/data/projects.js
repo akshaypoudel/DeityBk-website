@@ -9,12 +9,12 @@
 //    slug          unique url-safe id (letters, numbers, dashes only)
 //    title         project name
 //    category      "Mobile" | "Software" | "Website" | ...  (drives the
-//                  filter buttons — a new category appears automatically)
+//                  filter buttons - a new category appears automatically)
 //    description   short one-liner shown on the card
 //    image         cover image (card + detail hero). Any URL.
 //    tags          small pills
 //    liveLink      "Visit live" button on the detail page. Put '' or '#'
-//                  to hide it — paste your real link here later.
+//                  to hide it - paste your real link here later.
 //    ── detail page content ──
 //    client, year  small meta shown on the detail page
 //    overview      intro paragraphs (array)
@@ -40,7 +40,7 @@ export const projects = [
     year: '2025',
     overview: [
       'FinScope wanted to modernise their ageing banking app and make everyday money management feel effortless for millions of users.',
-      'We reimagined the entire experience — from onboarding to payments — with a focus on speed, clarity and trust.',
+      'We reimagined the entire experience - from onboarding to payments - with a focus on speed, clarity and trust.',
     ],
     video: '', // e.g. 'https://www.youtube.com/watch?v=XXXX' or '/videos/demo.mp4'
     gallery: [
@@ -51,7 +51,7 @@ export const projects = [
     challenge:
       'The legacy app was slow, cluttered and had a 2.1-star rating. Users struggled to complete basic tasks like transfers and bill payments.',
     solution:
-      'We rebuilt the app in React Native with an offline-first architecture, a new design system and biometric login — cutting the steps to send money from 6 taps to 2.',
+      'We rebuilt the app in React Native with an offline-first architecture, a new design system and biometric login - cutting the steps to send money from 6 taps to 2.',
     results: [
       { value: '+42%', label: 'Daily active users' },
       { value: '4.8★', label: 'New app rating' },
@@ -293,7 +293,7 @@ export const projects = [
     challenge:
       'Booking lab tests meant calling around or visiting in person, with no easy way to compare nearby labs and prices.',
     solution:
-      'We built location-based test discovery, healthcare/lab test listings and one-tap booking — on a MERN backend with a React Native mobile app.',
+      'We built location-based test discovery, healthcare/lab test listings and one-tap booking - on a MERN backend with a React Native mobile app.',
     results: [
       { value: 'Location', label: 'Based discovery' },
       { value: '1-tap', label: 'Test booking' },
@@ -346,7 +346,7 @@ export const projects = [
     year: '2024',
     overview: [
       'Trunri Tourism is a location-based travel app designed for foreign tourists exploring a new place.',
-      'Built with Flutter, it surfaces useful places and experiences around the user’s current location — from temples and events to restaurants and stays.',
+      'Built with Flutter, it surfaces useful places and experiences around the user’s current location - from temples and events to restaurants and stays.',
     ],
     video: '',
     gallery: [
@@ -357,7 +357,7 @@ export const projects = [
     challenge:
       'Foreign tourists don’t know which nearby places are worth their time or how to find local recommendations.',
     solution:
-      'We built location-based discovery for events, temples, accommodation, restaurants and attractions, with local recommendations — all in a Flutter app.',
+      'We built location-based discovery for events, temples, accommodation, restaurants and attractions, with local recommendations - all in a Flutter app.',
     results: [
       { value: 'Nearby', label: 'Location discovery' },
       { value: '5+', label: 'Place categories' },

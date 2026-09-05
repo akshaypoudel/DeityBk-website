@@ -5,7 +5,7 @@ import ContactForm from '../sections/ContactForm'
 export default function Contact() {
   return (
     <>
-      <Seo title="Contact" description="Tell us about your project — we usually reply within one business day." />
+      <Seo title="Contact" description="Tell us about your project - we usually reply within one business day." />
       <PageHeader
         eyebrow="Contact"
         title="Let's start something great"

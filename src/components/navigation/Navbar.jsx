@@ -6,7 +6,6 @@ import { site } from '../../data/site'
 import { cn } from '../../utils/cn'
 import Logo from '../Logo'
 import ThemeToggle from '../ThemeToggle'
-import ThemeCustomizer from './ThemeCustomizer'
 import { Button } from '../ui'
 
 export default function Navbar() {
@@ -25,6 +24,14 @@ export default function Navbar() {
     return () => (document.body.style.overflow = '')
   }, [open])
 
+  // Close the mobile menu with Escape
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <header
       className={cn(
@@ -33,7 +40,7 @@ export default function Navbar() {
       )}
     >
       <div className="w-full max-w-5xl">
-        {/* Floating pill — shrinks slightly on scroll (scale + padding) */}
+        {/* Floating pill - shrinks slightly on scroll (scale + padding) */}
         <nav
           className={cn(
             'glass flex origin-top items-center justify-between gap-2 rounded-full border border-border shadow-card transition-all duration-300',
@@ -75,9 +82,11 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <ThemeCustomizer />
-            <Button as={Link} to="/contact" size="sm" className="hidden sm:inline-flex">
-              Start a project <ArrowRight size={15} />
+            {/* CTA visible at every size - most ad traffic is mobile */}
+            <Button as={Link} to="/contact" size="sm" className="whitespace-nowrap">
+              <span className="hidden sm:inline">Start a project</span>
+              <span className="sm:hidden">Get quote</span>
+              <ArrowRight size={15} />
             </Button>
             <button
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-secondary/70 text-fg md:hidden"

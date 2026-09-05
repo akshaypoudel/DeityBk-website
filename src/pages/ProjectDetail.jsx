@@ -11,8 +11,9 @@ import CTA from '../sections/CTA'
 function NotFound() {
   return (
     <section className="container-x flex min-h-[60vh] flex-col items-center justify-center pt-32 text-center">
+      <Seo noindex title="Project not found" description="We couldn't find the project you're looking for." />
       <HeroTitle gradient className="text-6xl">Oops</HeroTitle>
-      <SectionHeading as="h1" className="mt-4 text-2xl">Project not found</SectionHeading>
+      <SectionHeading as="h2" className="mt-4 text-2xl">Project not found</SectionHeading>
       <Paragraph className="mt-2">We couldn't find the project you're looking for.</Paragraph>
       <Button as={Link} to="/projects" className="mt-6">
         <ArrowLeft size={16} /> Back to projects
@@ -32,7 +33,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <Seo title={project.title} description={project.description} />
+      <Seo title={project.title} description={project.description} image={project.image} />
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-28 pb-10 sm:pt-36">
@@ -107,6 +108,7 @@ export default function ProjectDetail() {
               <img
                 src={project.image}
                 alt={project.title}
+                fetchPriority="high"
                 className="aspect-[16/9] w-full object-cover"
               />
             </div>

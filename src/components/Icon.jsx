@@ -1,4 +1,4 @@
-// Icon registry — keeps the bundle small by importing ONLY the icons we use
+// Icon registry - keeps the bundle small by importing ONLY the icons we use
 // (importing all of lucide-react would bloat the build to ~1MB).
 //
 // 👉 Using a new icon in site.js? Add one import line + one entry below.

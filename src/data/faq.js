@@ -12,7 +12,7 @@ export const faqs = [
   },
   {
     q: 'How long does it take to build?',
-    a: 'A focused MVP typically takes 4–8 weeks, while larger platforms run over several months in short, transparent sprints. We agree a timeline together before we start.',
+    a: 'A focused MVP typically takes 4-8 weeks, while larger platforms run over several months in short, transparent sprints. We agree a timeline together before we start.',
   },
   {
     q: 'Do you work with startups and established companies?',
@@ -24,7 +24,7 @@ export const faqs = [
   },
   {
     q: 'Who owns the code and design?',
-    a: 'You do — 100%. Everything we create is handed over to you, including source code, design files and documentation.',
+    a: 'You do - 100%. Everything we create is handed over to you, including source code, design files and documentation.',
   },
 
   // 👇 ADD A QUESTION by copying this template:

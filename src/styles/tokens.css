@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════
-   DESIGN TOKENS — the single source of truth for colour.
+   DESIGN TOKENS - the single source of truth for colour.
 
    Only FOUR colours are editable (via the theme customizer):
      --primary    page background
@@ -16,14 +16,16 @@
    ════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* —— 4 core tokens (LIGHT defaults) —— */
+  /* -- 4 core tokens (LIGHT defaults) -- */
   --primary: 248 249 252;
   --secondary: 255 255 255;
   --accent: 108 78 255;
   --text: 17 20 34;
 
-  /* —— derived (do not edit) —— */
-  --muted: color-mix(in srgb, rgb(var(--text)) 55%, rgb(var(--primary)));
+  /* -- derived (do not edit) -- */
+  /* 68% text keeps light-mode body copy above the WCAG AA 4.5:1 contrast
+     minimum (55% measured only 4.04:1 on the light background) */
+  --muted: color-mix(in srgb, rgb(var(--text)) 68%, rgb(var(--primary)));
   --border: color-mix(in srgb, rgb(var(--text)) 14%, transparent);
   --accent-soft: color-mix(in srgb, rgb(var(--accent)) 14%, transparent);
   --accent-2: color-mix(in srgb, rgb(var(--accent)) 55%, white 45%);
@@ -36,7 +38,7 @@
 }
 
 .dark {
-  /* —— 4 core tokens (DARK defaults) —— */
+  /* -- 4 core tokens (DARK defaults) -- */
   --primary: 7 9 18;
   --secondary: 16 20 36;
   --accent: 138 110 255;

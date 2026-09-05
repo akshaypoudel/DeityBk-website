@@ -1,5 +1,5 @@
-/* Design-system entry. Tokens/shadows/gradients live in ./styles.
-   Fonts are loaded via <link> in index.html. */
+/* Design-system entry. Tokens/shadows/gradients live in ./styles. */
+@import './styles/fonts.css';
 @import './styles/tokens.css';
 @import './styles/shadows.css';
 @import './styles/typography.css';
@@ -26,7 +26,8 @@
         transparent 60%
       ),
       radial-gradient(50rem 40rem at -10% 10%, rgb(var(--accent) / 0.08), transparent 55%);
-    background-attachment: fixed;
+    /* no background-attachment: fixed - it forces repaints on every scroll
+       frame and janks scrolling on mobile Safari / mid-range Android */
   }
 
   ::selection {

@@ -14,7 +14,7 @@ function ProjectCard({ project }) {
 
   return (
     <Card as={Link} to={`/projects/${slug}`} hover className="group relative flex h-full flex-col overflow-hidden">
-      {/* Image slider — auto-playing, pauses on hover, manual controls. */}
+      {/* Image slider - auto-playing, pauses on hover, manual controls. */}
       <div className="relative aspect-[16/11] overflow-hidden">
         <ProjectImageSlider images={images} alt={project.title} />
         {/* readability gradient + category badge + open-arrow, above the slider */}

@@ -43,11 +43,12 @@ export const site = {
     rotatingWords: ['mobile apps', 'software', 'websites', 'experiences'],
     titleTail: 'that people love.',
     subtitle:
-      'DeityBK Labs is a product studio helping ambitious teams design, build and scale beautiful digital products — from first sketch to shipped release.',
+      'DeityBK Studio is a product studio helping ambitious teams design, build and scale beautiful digital products - from first sketch to shipped release.',
     primaryCta: { label: 'Start a project', to: '/contact' },
     secondaryCta: { label: 'View our work', to: '/projects' },
-    // small trust logos shown under the hero (text only, easy to edit)
-    trustedBy: ['Vercel', 'Stripe', 'Notion', 'Linear', 'Framer'],
+    // small trust logos shown under the hero (text only, easy to edit).
+    // Empty = row hidden. Add real client/project names here when ready.
+    trustedBy: [],
   },
 
   // ── About (section on home page) ───────────────────────
@@ -55,7 +56,7 @@ export const site = {
     eyebrow: 'Who we are',
     title: 'A small team obsessed with craft & outcomes.',
     body: [
-      'We are designers and engineers who love turning hard problems into products that feel effortless. No bloated processes, no hand-offs to junior teams — you work directly with the people building your product.',
+      'We are designers and engineers who love turning hard problems into products that feel effortless. No bloated processes, no hand-offs to junior teams - you work directly with the people building your product.',
       'From startups shipping their first MVP to scale-ups rebuilding their core platform, we bring the same standard of care to every pixel and every line of code.',
     ],
     highlights: [
@@ -73,8 +74,7 @@ export const site = {
 
   // ── Stats (animated counters) ──────────────────────────
   stats: [
-    { value: 120, suffix: '+', label: 'Projects delivered' },
-    { value: 48, suffix: '', label: 'Happy clients' },
+    { value: 80, suffix: '+', label: 'Projects delivered' },
     { value: 9, suffix: '', label: 'Years of experience' },
     { value: 99, suffix: '%', label: 'Client retention' },
   ],
@@ -84,7 +84,7 @@ export const site = {
     { icon: 'Search', title: 'Discover', text: 'We dig into your goals, users and market to define what success looks like.' },
     { icon: 'PenTool', title: 'Design', text: 'We craft intuitive flows and beautiful interfaces, validated with prototypes.' },
     { icon: 'Code2', title: 'Build', text: 'We engineer your product in fast, transparent sprints you can follow live.' },
-    { icon: 'Rocket', title: 'Launch & grow', text: 'We ship, measure and iterate — helping you scale after go-live.' },
+    { icon: 'Rocket', title: 'Launch & grow', text: 'We ship, measure and iterate - helping you scale after go-live.' },
   ],
 
   // ── Team ──── (edit in src/data/team.js) ──────────────
@@ -115,20 +115,14 @@ export const site = {
   },
 
   // ── WhatsApp floating button ───────────────────────────
-  // ⚠️ PLACEHOLDER NUMBER — swap `number` for your real WhatsApp line.
-  // It must be full international format, DIGITS ONLY: country code +
-  // number, with no '+', spaces, dashes or leading zero.
-  //   IN  98765 43210    →  '919876543210'
-  //   UK  07700 900123   →  '447700900123'
-  //   US  (415) 555-0123 →  '14155550123'
-  // The current value is all zeroes on purpose: Indian mobile numbers
-  // never start with 0, so it's a valid-shaped but unassignable number.
-  // WhatsApp shows "this number is invalid" rather than opening a chat
-  // with some stranger who happens to own a realistic-looking number.
+  // Full international format, DIGITS ONLY: country code + number, with
+  // no '+', spaces, dashes or leading zero (IN 88005 06627 → '918800506627').
   // Set `number` to '' to hide the button entirely.
   whatsapp: {
-    number: '919876543212',
-    // Pre-filled text the visitor sends. Keep it short — they can edit it
+    // Primary business line (+91 88005 06627). Both numbers are shown in
+    // the contact card and footer; this one receives the WhatsApp chats.
+    number: '918800506627',
+    // Pre-filled text the visitor sends. Keep it short - they can edit it
     // before hitting send, and a long wall of text tends to get deleted.
     message: "Hi DeityBK Studio! I saw your website and I'd like to talk about a project.",
     label: 'Chat with us on WhatsApp',
@@ -137,11 +131,13 @@ export const site = {
   },
 
   // ── Socials (icon name → url) ──────────────────────────
+  // Commented out until real profile URLs are ready - uncomment a line
+  // and replace '#' with the profile link to bring an icon back.
   socials: [
-    { icon: 'Github', label: 'GitHub', url: '#' },
-    { icon: 'Twitter', label: 'Twitter', url: '#' },
-    { icon: 'Linkedin', label: 'LinkedIn', url: '#' },
-    { icon: 'Instagram', label: 'Instagram', url: '#' },
+    // { icon: 'Github', label: 'GitHub', url: '#' },
+    // { icon: 'Twitter', label: 'Twitter', url: '#' },
+    // { icon: 'Linkedin', label: 'LinkedIn', url: '#' },
+    // { icon: 'Instagram', label: 'Instagram', url: '#' },
   ],
 
   // ── Footer ─────────────────────────────────────────────
@@ -156,6 +152,7 @@ export const site = {
           { label: 'Services', to: '/services' },
           { label: 'Projects', to: '/projects' },
           { label: 'Contact', to: '/contact' },
+          { label: 'Privacy Policy', to: '/privacy' },
         ],
       },
       {

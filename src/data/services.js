@@ -14,7 +14,7 @@
 //    features     array of short bullet points (shown on the card)
 //    ── detail page content ──
 //    overview     intro paragraphs (array)
-//    included     array of { title, text } — what the service covers
+//    included     array of { title, text } - what the service covers
 // ════════════════════════════════════════════════════════════════════
 
 export const services = [
@@ -23,10 +23,10 @@ export const services = [
     slug: 'mobile-app-development',
     title: 'Mobile App Development',
     description:
-      'Native-feeling iOS & Android apps built with React Native and Flutter — fast, polished and store-ready.',
+      'Native-feeling iOS & Android apps built with React Native and Flutter - fast, polished and store-ready.',
     features: ['iOS & Android', 'React Native / Flutter', 'Offline-first', 'App Store launch'],
     overview: [
-      'We design and build mobile apps that feel fast, native and effortless — for both iOS and Android from a single codebase.',
+      'We design and build mobile apps that feel fast, native and effortless - for both iOS and Android from a single codebase.',
       'From the first prototype to a live App Store and Play Store launch, we handle the whole journey and the tricky details in between.',
     ],
     included: [
@@ -44,7 +44,7 @@ export const services = [
       'Custom web platforms, SaaS products and internal tools engineered for scale, security and speed.',
     features: ['SaaS platforms', 'APIs & backends', 'Cloud & DevOps', 'Automation'],
     overview: [
-      'We build robust, scalable software — SaaS products, internal tools and the APIs that power them.',
+      'We build robust, scalable software - SaaS products, internal tools and the APIs that power them.',
       'Clean, tested, well-documented code that your team can build on for years, not a prototype you have to throw away.',
     ],
     included: [
@@ -62,7 +62,7 @@ export const services = [
       'High-converting marketing sites and web apps with stunning UI, blazing performance and clean SEO.',
     features: ['Landing pages', 'Web apps', 'CMS integration', 'SEO & performance'],
     overview: [
-      'Your website is often the first impression — we make it a great one, and a fast one.',
+      'Your website is often the first impression - we make it a great one, and a fast one.',
       'Beautiful, high-converting sites and web apps with clean SEO and top performance scores out of the box.',
     ],
     included: [
@@ -113,10 +113,10 @@ export const services = [
     slug: 'ai-integration',
     title: 'AI Integration',
     description:
-      'Bring intelligent features to your product — chat, search, automation and generative experiences.',
+      'Bring intelligent features to your product - chat, search, automation and generative experiences.',
     features: ['LLM features', 'Chatbots', 'Smart search', 'Automation'],
     overview: [
-      'AI can make your product dramatically more useful — when it is applied to the right problems.',
+      'AI can make your product dramatically more useful - when it is applied to the right problems.',
       'We add practical, reliable AI features that save your users time and set you apart from competitors.',
     ],
     included: [

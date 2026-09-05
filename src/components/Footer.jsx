@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 import { site } from '../data/site'
+import { track } from '../utils/track'
 import Logo from './Logo'
 import Icon from './Icon'
 import { Overline, SmallText } from './typography'
 
 export default function Footer() {
-  const year = 2026 // template default; update as you like
+  const year = new Date().getFullYear()
 
   return (
     <footer className="relative mt-24 border-t border-border bg-surface/40">
@@ -15,6 +16,7 @@ export default function Footer() {
         <div className="max-w-xs">
           <Logo />
           <p className="mt-4 text-sm leading-relaxed text-muted">{site.footer.blurb}</p>
+          {site.socials.length > 0 && (
           <div className="mt-5 flex gap-2">
             {site.socials.map((s) => (
               <a
@@ -29,12 +31,13 @@ export default function Footer() {
               </a>
             ))}
           </div>
+          )}
         </div>
 
         {/* Link columns */}
         {site.footer.columns.map((col) => (
           <div key={col.title}>
-            <Overline as="h4" className="text-fg">{col.title}</Overline>
+            <Overline as="h3" className="text-fg">{col.title}</Overline>
             <ul className="mt-4 space-y-3">
               {col.links.map((l) => (
                 <li key={l.label}>
@@ -52,7 +55,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <Overline as="h4" className="text-fg">Get in touch</Overline>
+          <Overline as="h3" className="text-fg">Get in touch</Overline>
           <ul className="mt-4 space-y-3 text-sm text-muted">
             <li>
               <a href={`mailto:${site.contact.email}`} className="flex items-center gap-2.5 hover:text-brand">
@@ -61,7 +64,11 @@ export default function Footer() {
             </li>
             {(site.contact.phones || [site.contact.phone]).map((num) => (
               <li key={num}>
-                <a href={`tel:${num.replace(/[^\d+]/g, '')}`} className="flex items-center gap-2.5 hover:text-brand">
+                <a
+                  href={`tel:${num.replace(/[^\d+]/g, '')}`}
+                  onClick={() => track('call_click', { location: 'footer' })}
+                  className="flex items-center gap-2.5 hover:text-brand"
+                >
                   <Phone size={16} className="text-brand" /> {num}
                 </a>
               </li>
@@ -79,7 +86,7 @@ export default function Footer() {
             © {year} {site.brand.name}. All rights reserved.
           </p>
           <p>
-            Built with <span className="text-brand">♥</span> — a Nova Labs template.
+            Built with <span className="text-brand">♥</span> by {site.brand.name}.
           </p>
         </div>
       </div>

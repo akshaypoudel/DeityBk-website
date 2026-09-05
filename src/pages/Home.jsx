@@ -19,8 +19,8 @@ export default function Home() {
       <About />
       {/* <Team /> */}
       <ServicesPreview />
-      <Stats />
       <FeaturedProjects />
+      <Stats />
       <Process />
       <Testimonials />
       <TechMarquee />

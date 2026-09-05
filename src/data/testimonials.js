@@ -7,27 +7,30 @@
 //    avatar  photo URL (or leave the placeholder)
 // ════════════════════════════════════════════════════════════════════
 
+// ⚠️ These are drafted placeholders tied to real projects. Before scaling
+// ad spend, swap each quote + name for the client's REAL words and name -
+// invented endorsements can get Google Ads disapproved.
 export const testimonials = [
   {
     quote:
-      'Nova Labs felt like an extension of our own team. They shipped faster than we thought possible and the quality was outstanding.',
-    name: 'Sarah Chen',
-    role: 'CEO, FinScope',
-    avatar: 'https://i.pravatar.cc/120?img=47',
+      'DeityBK Studio felt like an extension of our own team. They understood what our students needed and shipped a platform that just works.',
+    name: 'SuggestCollege',
+    role: 'Education platform',
+    avatar: '', // '' shows an initial-letter badge instead of a photo
   },
   {
     quote:
-      'The design work alone transformed how our customers see us. Our conversion rate more than doubled after launch.',
-    name: 'Marcus Bell',
-    role: 'Founder, Storely',
-    avatar: 'https://i.pravatar.cc/120?img=12',
+      'Clear communication at every step and real care for the outcome. The app came out polished, fast, and exactly on scope.',
+    name: 'FamCure',
+    role: 'Healthcare app',
+    avatar: '',
   },
   {
     quote:
-      'Clear communication, brilliant engineers, and a genuine care for the outcome. We have already started our next project with them.',
-    name: 'Aisha Rahman',
-    role: 'Product Lead, MediBook',
-    avatar: 'https://i.pravatar.cc/120?img=32',
+      'From the first call to launch, everything was smooth. The new website looks brilliant and our booking enquiries have grown noticeably.',
+    name: 'Trunri Tourism',
+    role: 'Travel & tourism website',
+    avatar: '',
   },
 
   // 👇 ADD A NEW TESTIMONIAL by copying this template:

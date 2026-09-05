@@ -11,8 +11,9 @@ import CTA from '../sections/CTA'
 function NotFound() {
   return (
     <section className="container-x flex min-h-[60vh] flex-col items-center justify-center pt-32 text-center">
+      <Seo noindex title="Service not found" description="We couldn't find the service you're looking for." />
       <HeroTitle gradient className="text-6xl">Oops</HeroTitle>
-      <SectionHeading as="h1" className="mt-4 text-2xl">Service not found</SectionHeading>
+      <SectionHeading as="h2" className="mt-4 text-2xl">Service not found</SectionHeading>
       <Button as={Link} to="/services" className="mt-6">
         <ArrowLeft size={16} /> All services
       </Button>

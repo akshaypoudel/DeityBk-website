@@ -4,11 +4,12 @@ import { motion } from 'framer-motion'
 import Navbar from './components/navigation/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import RouteAnalytics from './components/RouteAnalytics'
 import ScrollProgress from './components/ScrollProgress'
 import WhatsAppButton from './components/WhatsAppButton'
 import { Button } from './components/ui'
 import { HeroTitle, SectionHeading, Paragraph } from './components/typography'
-import Home from './pages/Home' // eager — the landing page
+import Home from './pages/Home' // eager - the landing page
 import ThankYou from './pages/ThankYou'
 
 // Code-split the secondary pages so the initial load stays lean.
@@ -18,6 +19,7 @@ const Projects = lazy(() => import('./pages/Projects'))
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'))
 const Contact = lazy(() => import('./pages/Contact'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const Privacy = lazy(() => import('./pages/Privacy'))
 
 function PageFallback() {
   return (
@@ -30,12 +32,16 @@ function PageFallback() {
 function NotFound() {
   return (
     <section className="container-x flex min-h-[60vh] flex-col items-center justify-center pt-32 text-center">
+      <Seo noindex title="Page not found" description="The page you're looking for doesn't exist." />
       <HeroTitle gradient className="text-7xl">404</HeroTitle>
-      <SectionHeading as="h1" className="mt-4 text-2xl">Page not found</SectionHeading>
+      <SectionHeading as="h2" className="mt-4 text-2xl">Page not found</SectionHeading>
       <Paragraph className="mt-2">The page you're looking for doesn't exist.</Paragraph>
-      <Button as={Link} to="/" className="mt-6">
-        Back home
-      </Button>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <Button as={Link} to="/">Back home</Button>
+        <Button as={Link} to="/services" variant="ghost">Our services</Button>
+        <Button as={Link} to="/projects" variant="ghost">Our work</Button>
+        <Button as={Link} to="/contact" variant="ghost">Contact us</Button>
+      </div>
     </section>
   )
 }
@@ -49,7 +55,7 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       {/* Entrance-only page transition, keyed by route. Re-mounts and
-          fades the new page in on every navigation — no exit animation,
+          fades the new page in on every navigation - no exit animation,
           so the new page always renders (a mode="wait" exit that fails to
           complete would otherwise leave the old page stuck on screen). */}
       <motion.main
@@ -67,6 +73,7 @@ export default function App() {
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="/privacy-policy/:slug" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -76,6 +83,10 @@ export default function App() {
       {/* Outside <main> so it stays put across route changes instead of
           re-animating on every navigation. */}
       <WhatsAppButton />
+      {/* Last in the tree on purpose: its effect runs after each page's
+          <Seo> has updated document.title, so page_views carry the right
+          title. */}
+      <RouteAnalytics />
     </div>
   )
 }

@@ -5,8 +5,13 @@ import SectionHeading from '../components/ui/SectionHeading'
 import Reveal from '../components/ui/Reveal'
 import ProjectCard from '../components/ProjectCard'
 
+// Slugs of the projects to spotlight on the home page - the branded client
+// work converts better than the generic entries at the top of the list.
+const FEATURED = ['suggestcollege', 'famcure', 'trunri-tourism']
+
 export default function FeaturedProjects() {
-  const projects = site.projects.slice(0, 3)
+  const featured = FEATURED.map((slug) => site.projects.find((p) => p.slug === slug)).filter(Boolean)
+  const projects = featured.length === 3 ? featured : site.projects.slice(0, 3)
 
   return (
     <section className="py-20 sm:py-28">

@@ -1,4 +1,4 @@
-/* Reusable gradient utilities — all driven by the accent token so they
+/* Reusable gradient utilities - all driven by the accent token so they
    retint automatically when the accent colour changes. */
 @layer components {
   .text-gradient {

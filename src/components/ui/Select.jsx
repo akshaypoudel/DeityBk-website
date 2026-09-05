@@ -51,6 +51,12 @@ export default function Select({
     }
   }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Keep the keyboard-highlighted option visible in a scrolled list
+  useEffect(() => {
+    if (!open || active < 0) return
+    listRef.current?.children[active]?.scrollIntoView({ block: 'nearest' })
+  }, [open, active])
+
   const choose = (val) => {
     onChange?.(val)
     setOpen(false)
@@ -93,6 +99,7 @@ export default function Select({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
+        aria-activedescendant={open && active >= 0 ? `${listId}-opt-${active}` : undefined}
         onClick={() => setOpen((o) => !o)}
         onKeyDown={onKeyDown}
         className={`flex w-full items-center justify-between gap-2 rounded-xl border bg-secondary/60 px-4 py-3 text-left text-sm outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/30 ${
@@ -109,7 +116,7 @@ export default function Select({
       </button>
 
       {/* Rendered conditionally (no exit animation) so the panel always
-          fully unmounts on close — an invisible lingering overlay would
+          fully unmounts on close - an invisible lingering overlay would
           otherwise block clicks on the fields below. */}
       {open && (
         <motion.ul
@@ -127,6 +134,7 @@ export default function Select({
               return (
                 <li
                   key={item.value || `opt-${i}`}
+                  id={`${listId}-opt-${i}`}
                   role="option"
                   aria-selected={isSelected}
                   onMouseEnter={() => setActive(i)}

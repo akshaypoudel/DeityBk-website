@@ -9,11 +9,11 @@ import CTA from '../sections/CTA'
 export default function Services() {
   return (
     <>
-      <Seo title="Services" description="Mobile apps, software, websites, design, strategy and AI — everything you need to ship great products." />
+      <Seo title="Services" description="Mobile apps, software, websites, design, strategy and AI - everything you need to ship great products." />
       <PageHeader
         eyebrow="Services"
         title="Everything you need to ship great products"
-        subtitle="Design, engineering and strategy under one roof — pick a single service or let us take you end to end."
+        subtitle="Design, engineering and strategy under one roof - pick a single service or let us take you end to end."
       />
 
       <section className="pb-8">

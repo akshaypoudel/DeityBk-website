@@ -33,7 +33,7 @@ export default function ProjectImageSlider({
   )
   const jump = useCallback((i) => setIndex(i), [])
 
-  // Auto-advance — paused on hover and when the tab is hidden. Respects the
+  // Auto-advance - paused on hover and when the tab is hidden. Respects the
   // user's reduced-motion preference by not auto-playing.
   useEffect(() => {
     if (count <= 1 || paused) return undefined
@@ -71,7 +71,7 @@ export default function ProjectImageSlider({
         <motion.img
           key={index}
           src={slides[index]}
-          alt={`${alt}${count > 1 ? ` — image ${index + 1} of ${count}` : ''}`}
+          alt={`${alt}${count > 1 ? ` - image ${index + 1} of ${count}` : ''}`}
           loading="lazy"
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +83,7 @@ export default function ProjectImageSlider({
 
       {count > 1 && (
         <>
-          {/* Prev / next — appear on hover (and always on touch, where there's
+          {/* Prev / next - appear on hover (and always on touch, where there's
               no hover state, they sit at low opacity for discoverability). */}
           <button
             type="button"

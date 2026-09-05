@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { site } from '../data/site'
+import { track } from '../utils/track'
 
 // Lucide has no WhatsApp glyph, so the official mark is inlined here.
 function WhatsAppGlyph({ size = 28 }) {
@@ -27,7 +28,7 @@ export default function WhatsAppButton() {
 
   // wa.me works on mobile (opens the app) and desktop (opens WhatsApp Web),
   // so one URL covers both. The text param is what pre-fills their compose
-  // box — they can still edit it before sending.
+  // box - they can still edit it before sending.
   const href = `https://wa.me/${number}?text=${encodeURIComponent(whatsapp.message || '')}`
 
   return (
@@ -35,6 +36,7 @@ export default function WhatsAppButton() {
       href={href}
       target="_blank"
       rel="noreferrer noopener"
+      onClick={() => track('whatsapp_click', { location: 'floating_button' })}
       aria-label={whatsapp.label || 'Chat with us on WhatsApp'}
       initial={reduceMotion ? false : { opacity: 0, scale: 0.6, y: 12 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -43,7 +45,7 @@ export default function WhatsAppButton() {
       whileTap={{ scale: 0.94 }}
       className="group fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 outline-none ring-offset-2 ring-offset-bg focus-visible:ring-2 focus-visible:ring-[#25D366] sm:bottom-8 sm:right-8"
     >
-      {/* Pulsing halo — purely decorative, and skipped when the visitor
+      {/* Pulsing halo - purely decorative, and skipped when the visitor
           has asked for reduced motion. */}
       {!reduceMotion && (
         <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-20 [animation-duration:2.5s]" />

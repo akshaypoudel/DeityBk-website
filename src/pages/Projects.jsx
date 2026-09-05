@@ -45,7 +45,7 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Grid — the filtered list is rendered directly (no
+          {/* Grid - the filtered list is rendered directly (no
               AnimatePresence exit) so filtered-out cards are always removed.
               `key={active}` re-mounts the grid on filter change so the new
               set fades in. */}

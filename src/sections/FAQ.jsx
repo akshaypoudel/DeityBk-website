@@ -40,8 +40,23 @@ export default function FAQ() {
   const [openIdx, setOpenIdx] = useState(0)
   if (faqs.length === 0) return null
 
+  // FAQPage structured data → eligible for FAQ rich results in Google Search.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
   return (
     <section id="faq" className="scroll-mt-24 py-20 sm:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="container-x">
         <SectionHeading
           center

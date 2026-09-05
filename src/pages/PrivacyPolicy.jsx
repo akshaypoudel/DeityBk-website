@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, FileText } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
@@ -5,7 +6,7 @@ import Seo from '../components/Seo'
 import Button from '../components/ui/Button'
 import Container from '../components/ui/Container'
 import { SectionHeading, SmallText } from '../components/typography'
-import { privacyPolicies, privacyPolicySlugs } from '../data/privacyPolicies'
+import { loadPrivacyPolicy, privacyPolicySlugs } from '../data/privacyPolicies'
 
 function parsePolicyHtml(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html')
@@ -56,9 +57,29 @@ function PolicyNotFound() {
 
 export default function PrivacyPolicy() {
   const { slug = '' } = useParams()
-  const source = privacyPolicies[slug]
+  // undefined = loading, null = not found, string = the policy HTML
+  const [source, setSource] = useState(undefined)
 
-  if (!source) {
+  useEffect(() => {
+    let active = true
+    setSource(undefined)
+    loadPrivacyPolicy(slug).then((html) => {
+      if (active) setSource(html ?? null)
+    })
+    return () => {
+      active = false
+    }
+  }, [slug])
+
+  if (source === undefined) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center pt-32">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+      </div>
+    )
+  }
+
+  if (source === null) {
     return <PolicyNotFound />
   }
 
@@ -68,7 +89,7 @@ export default function PrivacyPolicy() {
     <>
       <Seo
         title={policy.title}
-        description={`${policy.title} on the Nova Labs website.`}
+        description={`${policy.title} on the DeityBK Studio website.`}
       />
 
       <PageHeader

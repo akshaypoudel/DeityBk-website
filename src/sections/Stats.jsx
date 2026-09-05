@@ -15,7 +15,7 @@ export default function Stats() {
                 'radial-gradient(40rem 20rem at 20% 0%, rgb(var(--accent)/0.14), transparent 60%), radial-gradient(40rem 20rem at 90% 100%, rgb(var(--accent)/0.12), transparent 60%)',
             }}
           />
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {site.stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.1} className="text-center">
                 <div className="text-gradient font-display text-4xl font-bold sm:text-5xl">
