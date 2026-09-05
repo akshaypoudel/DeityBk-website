@@ -15,10 +15,17 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <!-- logo mark -->
+  <!-- logo mark: code tag -->
   <rect x="90" y="86" width="88" height="88" rx="22" fill="url(#brand)"/>
-  <path d="M118 152V108l32 44V108" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="196" y="150" font-family="'Space Grotesk', Arial, sans-serif" font-size="46" font-weight="700" fill="#ecf0f8">Nova Labs</text>
+  <path
+    d="M121 115l-15 15 15 15M147 115l15 15-15 15M139 108l-11 44"
+    fill="none"
+    stroke="#fff"
+    stroke-width="7.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <text x="196" y="150" font-family="'Space Grotesk', Arial, sans-serif" font-size="46" font-weight="700" fill="#ecf0f8">DeityBK Studio</text>
   <!-- headline -->
   <text x="90" y="330" font-family="'Space Grotesk', Arial, sans-serif" font-size="82" font-weight="700" fill="#ecf0f8">We build digital</text>
   <text x="90" y="420" font-family="'Space Grotesk', Arial, sans-serif" font-size="82" font-weight="700" fill="url(#brand)">products people love.</text>
